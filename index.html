@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио Азамата Маремукова</title>
+  <style>
+    /* === БАЗОВЫЕ СТИЛИ === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* === ШАПКА === */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* === ОСНОВНОЕ СОДЕРЖИМОЕ === */
+    main {
+      padding: 80px 0;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #2d3748;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #667eea;
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+
+    /* === КАРТОЧКИ === */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      color: #2d3748;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3::before {
+      content: '•';
+      color: #667eea;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      color: #4a5568;
+      line-height: 1.6;
+    }
+
+    /* === СПИСКИ === */
+    ul, ol {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: #4a5568;
+    }
+
+    /* === ЗАДАЧИ === */
+    .task-item {
+      background: #f7fafc;
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .task-item h4 {
+      color: #2d3748;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    /* === ПРОЕКТЫ === */
+    .project {
+      border-left: 4px solid #48bb78;
+    }
+
+    .project h3::before {
+      color: #48bb78;
+    }
+
+    /* === СТАТЬИ === */
+    .article {
+      border-left: 4px solid #ed8936;
+    }
+
+    .article h3::before {
+      color: #ed8936;
+    }
+
+    /* === КОНТАКТЫ === */
+    footer {
+      background: #2d3748;
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .contact-item h3 {
+      margin-bottom: 15px;
+      color: #cbd5e0;
+    }
+
+    .contact-item a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item a:hover {
+      color: #667eea;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #4a5568;
+      color: #a0aec0;
+      font-size: 0.9rem;
+    }
+
+    /* === АДАПТИВНОСТЬ === */
+    @media (max-width: 768px) {
+      header {
+        padding: 60px 0;
+      }
+
+      .name {
+        font-size: 2rem;
+      }
+
+      .title {
+        font-size: 1.1rem;
+      }
+
+      .avatar {
+        width: 150px;
+        height: 150px;
+      }
+
+      main {
+        padding: 60px 0;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px;
+      }
+
+      header {
+        padding: 40px 0;
+      }
+
+      .name {
+        font-size: 1.7rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Шапка -->
+  <header>
+    <div class="container">
+      <div class="profile">
+        <img src="https://s3newlxpbulgakov.storage.yandexcloud.net/user_d052fa28-bb39-49ba-b0b0-39def4d20a56/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202025-03-06%20085010_96bbb6b3-120b-4730-bcdc-4944cbedd198.png" alt="Азамат Маремуков" class="avatar">
+        <div>
+          <h1 class="name">Азамат Маремуков</h1>
+          <p class="title">Веб-разработчик</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Основное содержание -->
+  <main class="container">
+    <!-- Обо мне -->
+    <section id="about">
+      <h2 class="section-title">Обо мне</h2>
+      <div class="card">
+        <p>Я начинающий веб-разработчик, изучаю HTML, CSS и JavaScript. Создаю сайты. Учусь на втором курсе по направлению «Разработка сайтов». Постепенно осваиваю современные инструменты: GitHub, WordPress, MySQL.</p>
+        <p>В будущем хочу развиваться как fullstack-разработчик. Также планирую открыть бизнес по диагностике авто и чип-тюнингу.</p>
+      </div>
+    </section>
+
+    <!-- Учебные задачи -->
+    <section id="tasks">
+      <h2 class="section-title">Учебные задачи</h2>
+      
+      <div class="task-item">
+        <h4>Цели и задачи</h4>
+        <p><strong>Цель:</strong> применить на практике знания, полученные ранее, а именно: научиться создавать адаптивные сайты при помощи таких инструментов, как медиазапросы, изменяемые изображения, относительные единицы измерения и гибкая верстка.</p>
+        <p><strong>Время на выполнение:</strong> 2 часа – 1 пара.</p>
+        <p><strong>Необходимое программное обеспечение:</strong> Среда разработки (Visual Studio Code, WebStorm или любая удобная вам), Интернет браузер.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Приобретаемые навыки</h3>
+          <ul>
+            <li>Создание адаптивных веб-страниц</li>
+            <li>Умение применять медиазапросы для настройки стилей под различные экраны</li>
+            <li>Умение оптимизировать содержимое</li>
+            <li>Умение использовать сетку и флексбоксы для гибкой верстки</li>
+            <li>Оптимизация производительности сайта</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Теоретический материал</h3>
+          <p>Смотрите материал в Булгакове по темам:</p>
+          <ul>
+            <li>«Гибкий макет с использованием Flexbox и Grid»</li>
+            <li>«Адаптивный дизайн: медиазапросы, ретинизация изображений»</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Этапы выполнения работы</h3>
+          <ol>
+            <li>Выберите новый шаблон или используйте тот, который был у вас в КТ №1 и №2.</li>
+            <li>Откройте сайт, который вы разрабатывали в КТ №2 или создайте новый с нуля.</li>
+            <li>Используя сетку, медиазапросы и прочие инструменты создайте адаптивный сайт.</li>
+            <li>Протестируйте адаптивность вашего сайта.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Проекты -->
+    <section id="portfolio">
+      <h2 class="section-title">Мои проекты</h2>
+      <div class="cards-grid">
+        <div class="card project">
+          <h3>Сайт-визитка</h3>
+          <p>Простой сайт с использованием HTML и CSS. Также сделал школьный сайт на WordPress с новостями, фотогалереей и контактной формой.</p>
+        </div>
+
+        <div class="card project">
+          <h3>ElicoAgro</h3>
+          <p>Многостраничный сайт с разделами: Главная, О компании, Каталог продукции, Контакты. Использовал flexbox, grid и медиазапросы для адаптивности.</p>
+        </div>
+
+        <div class="card project">
+          <h3>Тесты по русскому языку</h3>
+          <p>Плагин для WordPress, позволяющий ученикам проходить тесты. Реализована проверка ответов, сохранение результатов и панель администратора.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Статьи -->
+    <section id="blog">
+      <h2 class="section-title">Последние статьи</h2>
+      <div class="cards-grid">
+        <div class="card article">
+          <h3>Почему важно использовать семантический HTML</h3>
+          <p>Семантические теги делают код понятнее для поисковиков и доступнее для пользователей, улучшая SEO и удобство восприятия.</p>
+        </div>
+
+        <div class="card article">
+          <h3>Первые шаги в JavaScript</h3>
+          <p>Начинать стоит с переменных, условий и циклов. Потом переходить к работе с DOM, чтобы изменять страницу динамически.</p>
+        </div>
+
+        <div class="card article">
+          <h3>Зачем нужен Git и GitHub</h3>
+          <p>Git помогает отслеживать изменения, а GitHub — хранить проекты и работать в команде. Это важный инструмент даже для новичка.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Контакты -->
+  <footer>
+    <div class="container">
+      <h2 class="section-title" style="color: white;">Контакты</h2>
+      
+      <div class="contacts-grid">
+        <div class="contact-item">
+          <h3>Email</h3>
+          <a href="mailto:azamatmaremukov2@gmail.ru">azamatmaremukov2@gmail.ru</a>
+        </div>
+
+        <div class="contact-item">
+          <h3>Телефон</h3>
+          <a href="tel:+79398888937">+7 (939) 888-89-37</a>
+        </div>
+
+        <div class="contact-item">
+          <h3>GitHub</h3>
+          <a href="https://github.com/AzamatMaremukov" target="_blank">github.com/AzamatMaremukov</a>
+        </div>
+
+        <div class="contact-item">
+          <h3>Telegram</h3>
+          <a href="https://t.me/Maremukov_88" target="_blank">@Maremukov_88</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        &copy; 2025 Азамат Маремуков. Все права защищены.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
